@@ -3,6 +3,7 @@ package com.codepath.cchem.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import  android.view.View;
@@ -11,10 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.cchem.flixster.MovieDetailsActivity;
@@ -65,20 +66,34 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+        androidx.constraintlayout.widget.ConstraintLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster= itemView.findViewById(R.id.ivPoster);
+            layout = itemView.findViewById(R.id.layout);
             // add as the itemView's OnClickListener
             itemView.setOnClickListener(this);
         }
+
 
         public void bind(Movie movie){
             int radius = 10;
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
+//            List l = null;
+//            l.add(R.drawable.gradient_1);
+//            l.add(R.drawable.gradient_2);
+//            l.add(R.drawable.gradient_3);
+//            l.add(R.drawable.gradient_4);
+//            l.add(R.drawable.gradient_5);
+//            l.add(R.drawable.gradient_6);
+//            l.add(R.drawable.gradient_7);
+
+
+            layout.setBackground(ContextCompat.getDrawable(context, R.drawable.gradient_7));
 
             String imageUrl;
             // Image url changes based on portrait or landscape modes

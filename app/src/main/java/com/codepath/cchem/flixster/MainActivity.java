@@ -23,7 +23,7 @@ import okhttp3.Headers;
 
 public class MainActivity extends AppCompatActivity {
     public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=1c84fc98c01175a473765df933f04306";
-    public static final String TAG = "MainActivity";
+    public static final String TAG = "Movie";
 
     List<Movie> movies;
 
@@ -34,17 +34,19 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         movies = new ArrayList<>();
 
-        // Create the adapter
+
+        //    ADAPTER PROCESS
+        // 1. Create the adapter
         final MovieAdapter movieAdapter =  new MovieAdapter(this, movies);
-
-        // Se t the adapter on the recycler view
+        // 2. Set the adapter on the recycler view
         rvMovies.setAdapter(movieAdapter);
-
-        // Set a Layout Manager on the recycler view
+        // 3. Set a Layout Manager on the recycler view
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
-        // API entry
+        // API PROCESS
+        // 1. Create an http client
         AsyncHttpClient client = new AsyncHttpClient();
+        // 2. Use the client to get data through our API
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Headers headers, JSON json) {
