@@ -2,14 +2,19 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
+
+
+            <corners android:radius="30dp"/>
+            <padding android:left="12dp" android:top="12dp" android:right="12dp" android:bottom="12dp" />
             <gradient
-                android:startColor="#a64"
-                android:endColor="#ab94fb"
+                android:startColor="#84BDF3"
+                android:endColor="#B8569E"
                 android:angle="37"
                 android:type="linear"
                 android:gradientRadius="@dimen/cardview_default_radius"
 
                 />
+
         </shape>
     </item>
 </selector>

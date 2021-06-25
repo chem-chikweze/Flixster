@@ -3,11 +3,17 @@ package com.codepath.cchem.flixster;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.codepath.cchem.flixster.models.Movie;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -24,7 +30,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     RatingBar rbVoteAverage;
     TextView tvRatingNo;
     TextView tvOverview;
-
+    ImageView ivPoster;
 
     private YouTubePlayerView youTubePlayerView;
 
@@ -40,7 +46,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         // resolve the view objects
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvGenre = findViewById(R.id.tvGenre);
-
+        ivPoster=findViewById(R.id.imgMovieRounded);
         rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
         tvRatingNo = findViewById(R.id.tvRatingNo);
         tvOverview = (TextView) findViewById(R.id.tvOverview);
@@ -68,6 +74,18 @@ public class MovieDetailsActivity extends AppCompatActivity {
         tvRatingNo.setText(voteAverage+"");
         tvOverview.setText(movie.getOverview());
 
+        String imageUrl;
+        // Image url changes based on portrait or landscape modes
+        if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            imageUrl = movie.getBackdropPath();
+        } else {
+            imageUrl = movie.getPosterPath();
+        }
+
+        Glide.with(this)
+                .load(imageUrl)
+                .transform(new FitCenter(),new RoundedCorners(25)).apply(RequestOptions.circleCropTransform())
+                .into(ivPoster);
 
     }
 }

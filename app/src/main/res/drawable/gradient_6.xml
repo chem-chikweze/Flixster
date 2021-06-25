@@ -3,13 +3,14 @@
     <item>
         <shape>
             <gradient
-                android:startColor="#3a8"
-                android:endColor="#2b9"
+                android:startColor="#84BDF3"
+                android:endColor="#B8569E"
                 android:angle="37"
                 android:type="linear"
                 android:gradientRadius="@dimen/cardview_default_radius"
 
                 />
+
         </shape>
     </item>
 </selector>

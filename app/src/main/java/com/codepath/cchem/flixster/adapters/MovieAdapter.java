@@ -66,7 +66,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
-        androidx.constraintlayout.widget.ConstraintLayout layout;
+        android.widget.RelativeLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,17 +83,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             int radius = 10;
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
-//            List l = null;
-//            l.add(R.drawable.gradient_1);
-//            l.add(R.drawable.gradient_2);
-//            l.add(R.drawable.gradient_3);
-//            l.add(R.drawable.gradient_4);
-//            l.add(R.drawable.gradient_5);
-//            l.add(R.drawable.gradient_6);
-//            l.add(R.drawable.gradient_7);
-
-
-            layout.setBackground(ContextCompat.getDrawable(context, R.drawable.gradient_7));
 
             String imageUrl;
             // Image url changes based on portrait or landscape modes
@@ -108,6 +97,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                     .transform(new FitCenter(),new RoundedCorners(25))
                     .placeholder(R.drawable.placeholder).transform(new FitCenter(),new RoundedCorners(25))
                     .into(ivPoster);
+
+
+
 
         }
 
